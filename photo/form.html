@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Form</title>
+</head>
+<body>
+    
+    <table align="center"  style="background-color: rgb(135, 142, 144)">
+        <caption align="center"><h2>Regestration Form</h2></caption>
+    <form>
+       <tr >
+        <td>Name</td>
+        <td> <input type="text" name="txtname" placeholder="Your name! " required maxlength="20" /></td>
+       </tr>
+       <tr>
+        <td>Address</td>
+        <td> <input type="text" name="yourAddress" placeholder="Your address, please!"/></td>
+       </tr>
+       <tr>
+        <td>Email </td>
+        <td><input type="email" name="email" placeholder="Email Adderss!" required readonly disabled value="abc@gmail.com" /></td>
+       </tr>
+       <tr>
+        <td>Contact</td>
+        <td> <input type="number" name="contnumber"/></td>
+       </tr>
+       <tr>
+        <td>DOB</td>
+        <td> <input type="date" name="dateofbirth"/></td>
+       </tr>
+       <tr>
+        <td>Qualifications </td>
+         <td><select name="selqual"> 
+            <option value=" ">...Select Any One...</option>
+            <option value="12">+2 grade</option>
+            <option value="Bachlor's">Bachlors</option>
+            <option value="Master's">Masters</option>
+        </select>
+         </td>
+       </tr>
+       <tr>
+        <td rowspan="3">Gander : </td> 
+        <td><input type="radio" name="Gander" value="Male"/> Male</td>
+       </tr>
+       <tr>
+        <td><input type="radio" name="Gander" value="Female"/> Female</td>
+       </tr> 
+        <tr>
+        <td><input type="radio" name="Gander" value="Others"/> Others</td>
+       </tr>
+      <tr>
+       <td> <input type="submit" name="submit" value="submit!" align="center" title="recorded your data" style="background-color: rgb(218, 212, 212);"></td>
+      </tr>
+      
+    </form>
+    </table>
+</body>
+</html>

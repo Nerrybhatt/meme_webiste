@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Just Fungi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background-color: rgb(200, 206, 211);
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgb(105, 122, 234);
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            margin: 5px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #logo {
+            font-size: 22px;
+            color: rgb(59, 55, 44);
+            font-weight: bolder;
+            border: 2px solid rgb(90, 95, 90);
+            padding: 1px 8px;
+            background-color: rgb(203, 222, 191);
+            border-radius: 5px;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links li {
+            margin-right: 1px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            padding: 10px;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .line {
+            color: rgb(188, 197, 204);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            gap: 5px;
+        }
+
+        .search-bar input {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 3px;
+            font-size: 14px;
+            width: 200px;
+        }
+
+        .search-bar button {
+            padding: 8px 15px;
+            background-color: rgb(90, 110, 220);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-bar button:hover {
+            background-color: rgb(80, 100, 210);
+        }
+
+        .user {
+            margin-left: 15px;
+        }
+
+        .user img {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+        }
+
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        /* Container */
+        .container {
+            display: grid;
+            grid-template-columns: 250px 1fr 200px;
+            gap: 15px;
+            margin-top: 34px;
+            padding: 0 15px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Categories */
+        .categories {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgb(79, 76, 76);
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .sticky_sides {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sticky_sides h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            padding-left: 2px;
+            color: rgb(120, 120, 116);
+            padding-bottom: 10px;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
+
+        .cato {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cato li {
+            margin-bottom: 20px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cato li:hover {
+            background-color: rgb(200, 206, 211);
+        }
+
+        .cato a {
+            text-decoration: none;
+            color: rgb(2, 4, 4);
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-weight: 500;
+        }
+
+        /* Posts Section */
+        .upload {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .box, .box_2, .box_3 {
+            background: rgb(222, 226, 230);
+            border: 2px solid rgb(79, 76, 76);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover, .box_2:hover, .box_3:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .post {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .post button {
+            align-self: flex-start;
+            padding: 8px 15px;
+            background-color: rgb(105, 122, 234);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .post button:hover {
+            background-color: rgb(90, 110, 220);
+        }
+
+        .post img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .remarks {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 15px;
+            background: rgb(240, 240, 240);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .remarks li button {
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .remarks li button:hover {
+            background-color: rgb(105, 122, 234);
+            color: white;
+        }
+
+        .remarks li button.active {
+            background-color: rgb(105, 122, 234);
+            color: white;
+        }
+
+        /* Tags Section */
+        .tags {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgb(79, 76, 76);
+            border-radius: 10px;
+            padding: 20px;
+            height: fit-content;
+        }
+
+        .tags h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            color: rgb(120, 120, 116);
+            padding-bottom: 10px;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
+
+        .T, .P, .A, .G, .S {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 0px;
+            margin-bottom: 10px;
+            gap: 5px;
+        }
+
+        .T button, .P button, .A button, .G button, .S button {
+            background-color: rgb(105, 122, 234);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            margin: 3px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+            transition: all 0.3s ease;
+        }
+
+        .T button:hover, .P button:hover, .A button:hover, .G button:hover, .S button:hover {
+            background-color: rgb(90, 110, 220);
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 200px 1fr 180px;
+                gap: 12px;
+            }
+
+            .search-bar input {
+                width: 150px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .navbar {
+                flex-wrap: nowrap;
+                justify-content: space-between;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: rgb(105, 122, 234);
+                flex-direction: column;
+                padding: 20px;
+                border-radius: 0 0 10px 10px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .search-bar {
+                margin-left: 0;
+                order: 3;
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .search-bar input {
+                flex: 1;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 10px;
+            }
+
+            .categories {
+                order: 2;
+                position: static;
+            }
+
+            .upload {
+                order: 1;
+            }
+
+            .tags {
+                order: 3;
+                position: static;
+            }
+
+            .sticky_sides {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 8px 15px;
+                margin: 2px;
+            }
+
+            #logo {
+                font-size: 18px;
+                padding: 3px 8px;
+            }
+
+            .container {
+                margin-top: 20px;
+                padding: 0 8px;
+            }
+
+            .categories, .tags {
+                padding: 15px;
+            }
+
+            .post img {
+                height: 250px;
+            }
+
+            .remarks {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+
+            .remarks li {
+                text-align: center;
+            }
+
+            .remarks li button {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                font-size: 16px;
+            }
+
+            .search-bar input {
+                font-size: 12px;
+                padding: 6px 8px;
+            }
+
+            .search-bar button {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .container {
+                gap: 15px;
+                margin-top: 15px;
+                padding: 0 5px;
+            }
+
+            .categories, .tags {
+                padding: 10px;
+            }
+
+            .post img {
+                height: 200px;
+            }
+
+            .T, .P, .A, .G, .S {
+                justify-content: center;
+            }
+
+            .cato li {
+                margin-bottom: 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid rgb(105, 122, 234);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close:hover {
+            color: rgb(105, 122, 234);
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgb(105, 122, 234);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 3000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: fadeInUp 0.3s ease-out;
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div id="logo">🍄 Just fungi</div>
+        
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#" onclick="filterContent('top')">Top</a><span class="line">|</span></li>
+            <li><a href="#" onclick="filterContent('trending')">Trending</a><span class="line">|</span></li>
+            <li><a href="#" onclick="filterContent('comics')">Comics</a><span class="line">|</span></li>
+            <li><a href="#" onclick="filterContent('account')">Account</a></li>
+        </ul>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search---" id="searchInput" onkeypress="handleSearch(event)">
+            <button onclick="performSearch()">Submit</button>
+        </div>
+
+        <div class="user">
+            <a href="#" onclick="showProfile()">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjIiIGhlaWdodD0iMjIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjgiIHI9IjMiLz48cGF0aCBkPSJNMTIgMTRjLTQgMC04IDItOCA0djJoMTZ2LTJjMC0yLTQtNC04LTRaIi8+PC9zdmc+" alt="User" style="filter: invert(1);">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Categories -->
+        <div class="categories">
+            <div class="sticky_sides">
+                <h3>Categories</h3>
+                <ul class="cato">
+                    <li onclick="filterByCategory('entertainment')">
+                        <span>📺</span>
+                        <a href="#">Entertainment</a>
+                    </li>
+                    <li onclick="filterByCategory('sports')">
+                        <span>🏆</span>
+                        <a href="#">Sports</a>
+                    </li>
+                    <li onclick="filterByCategory('politics')">
+                        <span>🗣️</span>
+                        <a href="#">Politics</a>
+                    </li>
+                    <li onclick="filterByCategory('knowledge')">
+                        <span>🧠</span>
+                        <a href="#">Knowledge</a>
+                    </li>
+                    <li onclick="filterByCategory('business')">
+                        <span>💼</span>
+                        <a href="#">Business</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Posts Upload Section -->
+        <div class="upload" id="postsContainer">
+            <div class="box fade-in-up">
+                <div class="post">
+                    <button onclick="showPostDetails(1)">Posts..</button>
+                    <img src="11.png" alt="Batman Robin Social Media Meme" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(1)" id="like-1"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span>👎</span></button></li>
+                    <li><button onclick="openComments(1)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(1)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+
+            <div class="box_2 fade-in-up" style="animation-delay: 0.1s;">
+                <div class="post">
+                    <button onclick="showPostDetails(2)">Posts..</button>
+                    <img src="7.png" alt="Fry Decision Making Meme" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(2)" id="like-2"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(2)" id="dislike-2"><span>👎</span></button></li>
+                    <li><button onclick="openComments(2)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(2)" id="save-2" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(2)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+
+            <div class="box_3 fade-in-up" style="animation-delay: 0.2s;">
+                <div class="post">
+                    <button onclick="showPostDetails(3)">Posts..</button>
+                    <img src="8.png" alt="Meme 8" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(3)" id="like-3"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(3)" id="dislike-3"><span>👎</span></button></li>
+                    <li><button onclick="openComments(3)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(3)" id="save-3" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(3)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+
+            <div class="box_3 fade-in-up" style="animation-delay: 0.3s;">
+                <div class="post">
+                    <button onclick="showPostDetails(4)">Posts..</button>
+                    <img src="9.png" alt="Amal Special Meme" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(4)" id="like-4"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(4)" id="dislike-4"><span>👎</span></button></li>
+                    <li><button onclick="openComments(4)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(4)" id="save-4" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(4)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+
+            <div class="box_3 fade-in-up" style="animation-delay: 0.4s;">
+                <div class="post">
+                    <button onclick="showPostDetails(5)">Posts..</button>
+                    <img src="10.png" alt="Capture Moment" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(5)" id="like-5"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(5)" id="dislike-5"><span>👎</span></button></li>
+                    <li><button onclick="openComments(5)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(5)" id="save-5" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(5)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+
+            <div class="box_3 fade-in-up" style="animation-delay: 0.5s;">
+                <div class="post">
+                    <button onclick="showPostDetails(6)">Posts..</button>
+                    <img src="12.PNG" alt="Meme 9" loading="lazy">
+                </div>
+                <ul class="remarks">
+                    <li><button onclick="toggleLike(6)" id="like-6"><span>👍</span></button></li>
+                    <li><button onclick="toggleDislike(6)" id="dislike-6"><span>👎</span></button></li>
+                    <li><button onclick="openComments(6)" class="margin"><span>💬</span> Commt.</button></li>
+                    <li><button onclick="toggleSave(6)" id="save-6" class="save"><span>💾</span> Save</button></li>
+                    <li><button onclick="shareMeme(6)" class="share"><span>📤</span> Share</button></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="tags">
+            <div class="sticky_sides">
+                <h3>Recommended tags</h3>
+                <ul class="T">
+                    <li><button onclick="searchByTag('2025')">#2025</button></li>
+                    <li><button onclick="searchByTag('February')">#February</button></li>
+                    <li><button onclick="searchByTag('trump')">#trump</button></li>
+                </ul>
+                <ul class="P">
+                    <li><button onclick="searchByTag('Russia')">#Russia</button></li>
+                    <li><button onclick="searchByTag('Politics')">#Politics</button></li>
+                    <li><button onclick="searchByTag('Ronaldo')">#Ronaldo</button></li>
+                </ul>
+                <ul class="A">
+                    <li><button onclick="searchByTag('US_gov')">#US_gov</button></li>
+                    <li><button onclick="searchByTag('Daily')">#Daily</button></li>
+                    <li><button onclick="searchByTag('Country')">#Country</button></li>
+                </ul>
+                <ul class="G">
+                    <li><button onclick="searchByTag('Birds')">#Birds</button></li>
+                    <li><button onclick="searchByTag('Cricket')">#Cricket</button></li>
+                    <li><button onclick="searchByTag('Messi')">#Messi</button></li>
+                </ul>
+                <ul class="S">
+                    <li><button onclick="searchByTag('champ_trop')">#champ_trop</button></li>
+                    <li><button onclick="searchByTag('Saudi')">#Saudi</button></li>
+                    <li><button onclick="searchByTag('Nature')">#Nature</button></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 style="color: rgb(105, 122, 234); margin-bottom: 20px;">Comments</h2>
+            <div id="commentsList" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;"></div>
+            <div style="display: flex; gap: 10px;">
+                <input type="text" id="commentInput" placeholder="Add a comment..." style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <button onclick="addComment()" style="background: rgb(105, 122, 234); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State management
+        let currentPostId = null;
+        let postStates = {};
+
+        // Initialize post states
+        for (let i = 1; i <= 6; i++) {
+            postStates[i] = {
+                liked: false,
+                disliked: false,
+                saved: false,
+                comments: []
+            };
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Search functionality
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim();
+            if (query) {
+                showNotification(`Searching for: "${query}"`);
+                // Here you would implement actual search logic
+            }
+        }
+
+        // Filter content
+        function filterContent(type) {
+            showNotification(`Filtering by: ${type}`);
+            // Here you would implement filtering logic
+        }
+
+        function filterByCategory(category) {
+            showNotification(`Showing ${category} memes`);
+            // Scroll to posts
+            document.getElementById('postsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function searchByTag(tag) {
+            document.getElementById('searchInput').value = tag;
+            showNotification(`Searching for tag: #${tag}`);
+            performSearch();
+        }
+
+        // Post interactions
+        function toggleLike(postId) {
+            const state = postStates[postId];
+            const likeBtn = document.getElementById(`like-${postId}`);
+            const dislikeBtn = document.getElementById(`dislike-${postId}`);
+
+            if (state.disliked) {
+                state.disliked = false;
+                dislikeBtn.classList.remove('active');
+            }
+
+            state.liked = !state.liked;
+            likeBtn.classList.toggle('active', state.liked);
+            
+            showNotification(state.liked ? 'Liked!' : 'Like removed');
+        }
+
+        function toggleDislike(postId) {
+            const state = postStates[postId];
+            const likeBtn = document.getElementById(`like-${postId}`);
+            const dislikeBtn = document.getElementById(`dislike-${postId}`);
+
+            if (state.liked) {
+                state.liked = false;
+                likeBtn.classList.remove('active');
+            }
+
+            state.disliked = !state.disliked;
+            dislikeBtn.classList.toggle('active', state.disliked);
+            
+            showNotification(state.disliked ? 'Disliked!' : 'Dislike removed');
+        }
+
+        function toggleSave(postId) {
+            const state = postStates[postId];
+            const saveBtn = document.getElementById(`save-${postId}`);
+            
+            state.saved = !state.saved;
+            saveBtn.classList.toggle('active', state.saved);
+            
+            if (state.saved) {
+                saveBtn.innerHTML = '<span>❤️</span> Saved';
+            } else {
+                saveBtn.innerHTML = '<span>💾</span> Save';
+            }
+            
+            showNotification(state.saved ? 'Meme saved!' : 'Meme unsaved');

@@ -1,0 +1,163 @@
+*{
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+body{
+   background-color: rgb(200, 206, 211);
+}
+.navbar
+ {  
+    
+    background-color:rgb(105, 122, 234);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Arial, sans-serif;
+    position: sticky;
+    top:0;
+ }
+
+ #logo{
+    font-size:22px ;
+    color:rgb(59, 55, 44);
+    font-weight:bolder;
+    border: 2px solid rgb(90, 95, 90);
+    padding: 1px 8px;
+    background-color: rgb(203, 222, 191);
+    border-radius: 5px;
+ }
+ .nav-links  {
+    display:flex; 
+    list-style:none;
+}
+.search-bar {
+   
+   margin-left:180px;
+
+}
+
+.user{
+   margin-left: 30px;
+}
+.line{
+   color: rgb(188, 197, 204);
+}
+.nav-links li {
+   margin-right: 1px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+}
+.sticky_sides h3{
+   font-family: Arial, Helvetica, sans-serif;
+   padding-left: 2px;
+   color: rgb(120, 120, 116);
+   padding-bottom: 10px;
+   text-decoration: underline;
+}
+
+.container{
+   display: flex;
+   gap: 15px;
+   margin-top: 34px;
+}
+
+
+.cato{
+   list-style:none;
+   
+}
+
+.sticky_sides{
+   position: sticky;
+   top:100px;
+}
+.cato a{
+   text-decoration:none;
+   color: rgb(2, 4, 4);
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.cato li{
+   margin-bottom:20px;
+}
+ .upload{
+   display: flex;
+   flex-direction: column;
+   margin-left: 150px;
+ }
+.post{ 
+   width: 500px;
+   height: 400px;
+   align-items: center;
+   border: 2px solid rgb(79, 76, 76);
+   padding:6px 10px;
+   background-color: rgb(222, 226, 230);
+}
+/* .box{
+   padding-left: 368px;
+} */
+.remarks{
+   list-style: none;
+   display: flex;
+   
+}
+.margin{
+   margin-left:130px;
+}
+.share{
+margin-left:20px;
+}
+.save{
+   margin-left:20px;
+}
+/* .box_2{
+   padding-left: 368px;
+}
+.box_3{
+   padding-left: 368px;
+} */
+.tags{
+   margin-left: 30px;
+   margin-top:0px; 
+   position: sticky;
+   top: 100px;
+}
+.T{
+   list-style: none;
+   /* background-color:rgb(105, 106, 106); */
+   display: flex;
+   padding-left: 0px;
+}
+.T:li{
+   background-color: aqua;
+}
+.A{
+   list-style: none;
+   /* background-color:rgb(105, 106, 106); */
+   display: flex;
+   padding-left: 0px;
+}
+.P{
+   list-style: none;
+   /* background-color:rgb(105, 106, 106); */
+   display: flex;
+   padding-left: 0px;
+   background-color: rgb(200, 206, 211);
+}
+.G{
+   list-style: none;
+   /* background-color:rgb(105, 106, 106); */
+   display: flex;
+   padding-left: 0px;
+   background-color: rgb(200, 206, 211);
+}
+.S{
+   list-style: none;
+   /* background-color:rgb(105, 106, 106); */
+   display: flex;
+   padding-left: 0px;
+}
