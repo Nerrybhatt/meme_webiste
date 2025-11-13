@@ -788,6 +788,8 @@
         </div>
 
         <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button> 
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button> 
+
     </nav>
 
     <!-- Main Container -->
