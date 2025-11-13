@@ -768,6 +768,12 @@
                 <li><a href="#" onclick="filterContent('comics')">Comics</a><span class="line">|</span></li>
                 <li><a href="sign_up.php" onclick="filterContent('account')">Account</a></li>
             </ul>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" onclick="filterContent('top')">Top</a><span class="line">|</span></li>
+                <li><a href="#" onclick="filterContent('trending')">Trending</a><span class="line">|</span></li>
+                <li><a href="#" onclick="filterContent('comics')">Comics</a><span class="line">|</span></li>
+                <li><a href="sign_up.php" onclick="filterContent('account')">Account</a></li>
+            </ul>
 
             <div class="nav-right">
                 <div class="search-bar">
