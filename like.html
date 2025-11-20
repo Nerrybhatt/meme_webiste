@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="clickableContainer">
+        Click me!
+    </div>
+    <h2 id="counterDisplay">0</h2>
+
+    <script>
+
+        let count = 0; // Initialize the counter
+
+        const clickableContainer = document.getElementById('clickableContainer');
+        const counterDisplay = document.getElementById('counterDisplay');
+
+        clickableContainer.addEventListener('click', function() {
+            count++; // Increment the counter
+            counterDisplay.innerText = count; // Update the display
+        });
+            </script>
+    
+</body>
+</html>

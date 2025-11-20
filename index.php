@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,13 +39,14 @@
             font-weight: bolder;
             border: 2px solid rgb(90, 95, 90);
             padding: 5px 12px;
-            background-color:rgb(248, 249, 250);
+            background-color: rgb(248, 249, 250);
             border-radius: 5px;
             white-space: nowrap;
             flex-shrink: 0;
         }
-        #logo a{
-            text-decoration:none;
+
+        #logo a {
+            text-decoration: none;
         }
 
         .nav-content {
@@ -135,20 +136,24 @@
             height: 22px;
             border-radius: 50%;
         }
-        .post_button{
+
+        .post_button {
             background-color: rgba(187, 222, 166, 1);
             padding: 5px 15px;
             border-radius: 10px;
             border: 3px solid black;
         }
-         .post_button a{
-             color:rgba(15, 27, 7, 1);
-             text-decoration: none;
-             font-weight:bold;
-         }
-         .post_button:hover {
-            background-color:  rgba(165, 222, 132, 1);
+
+        .post_button a {
+            color: rgba(15, 27, 7, 1);
+            text-decoration: none;
+            font-weight: bold;
         }
+
+        .post_button:hover {
+            background-color: rgba(165, 222, 132, 1);
+        }
+
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
             display: none;
@@ -234,7 +239,9 @@
             width: 100%;
         }
 
-        .box, .box_2, .box_3 {
+        .box,
+        .box_2,
+        .box_3 {
             background: rgb(222, 226, 230);
             border: 2px solid rgb(79, 76, 76);
             border-radius: 10px;
@@ -243,7 +250,9 @@
             width: 100%;
         }
 
-        .box:hover, .box_2:hover, .box_3:hover {
+        .box:hover,
+        .box_2:hover,
+        .box_3:hover {
             transform: translateY(-3px);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
@@ -337,7 +346,7 @@
             border-radius: 10px;
             padding: 20px;
             height: fit-content;
-            position:sticky;
+            position: sticky;
         }
 
         .tags h3 {
@@ -349,7 +358,11 @@
             font-size: 16px;
         }
 
-        .T, .P, .A, .G, .S {
+        .T,
+        .P,
+        .A,
+        .G,
+        .S {
             list-style: none;
             display: flex;
             flex-wrap: wrap;
@@ -358,7 +371,11 @@
             gap: 6px;
         }
 
-        .T button, .P button, .A button, .G button, .S button {
+        .T button,
+        .P button,
+        .A button,
+        .G button,
+        .S button {
             background-color: rgb(105, 122, 234);
             color: white;
             border: none;
@@ -370,7 +387,11 @@
             white-space: nowrap;
         }
 
-        .T button:hover, .P button:hover, .A button:hover, .G button:hover, .S button:hover {
+        .T button:hover,
+        .P button:hover,
+        .A button:hover,
+        .G button:hover,
+        .S button:hover {
             background-color: rgb(90, 110, 220);
             transform: scale(1.05);
         }
@@ -501,7 +522,8 @@
                 margin-left: 0;
             }
 
-            .remarks .save, .remarks .share {
+            .remarks .save,
+            .remarks .share {
                 margin-left: 0;
             }
         }
@@ -522,7 +544,8 @@
                 gap: 15px;
             }
 
-            .categories, .tags {
+            .categories,
+            .tags {
                 padding: 15px;
             }
 
@@ -555,7 +578,11 @@
                 margin-bottom: 12px;
             }
 
-            .T, .P, .A, .G, .S {
+            .T,
+            .P,
+            .A,
+            .G,
+            .S {
                 justify-content: center;
                 gap: 4px;
                 margin-bottom: 8px;
@@ -587,7 +614,8 @@
                 padding: 0 5px;
             }
 
-            .categories, .tags {
+            .categories,
+            .tags {
                 padding: 12px;
             }
 
@@ -604,7 +632,11 @@
                 font-size: 14px;
             }
 
-            .T button, .P button, .A button, .G button, .S button {
+            .T button,
+            .P button,
+            .A button,
+            .G button,
+            .S button {
                 font-size: 10px;
                 padding: 4px 8px;
             }
@@ -626,7 +658,8 @@
                 margin-top: 10px;
             }
 
-            .categories, .tags {
+            .categories,
+            .tags {
                 padding: 10px;
             }
 
@@ -677,8 +710,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* Fade in animation */
@@ -687,6 +725,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -746,21 +785,27 @@
             padding: 15px 25px;
             border-radius: 10px;
             z-index: 3000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             animation: fadeInUp 0.3s ease-out;
         }
 
         @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
         }
     </style>
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar">
-        <div id="logo"><a href="index.php" >🍄 Just fungi</a></div>
-        
+        <div id="logo"><a href="index.php">🍄 Just fungi</a></div>
+
         <div class="nav-content">
             <ul class="nav-links" id="navLinks">
                 <li><a href="#" onclick="filterContent('top')">Top</a><span class="line">|</span></li>
@@ -768,7 +813,7 @@
                 <li><a href="#" onclick="filterContent('comics')">Comics</a><span class="line">|</span></li>
                 <li><a href="sign_up.php" onclick="filterContent('account')">Account</a></li>
             </ul>
-            
+
 
             <div class="nav-right">
                 <div class="search-bar">
@@ -787,8 +832,8 @@
             </div>
         </div>
 
-        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button> 
-        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button> 
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
     </nav>
 
@@ -822,9 +867,14 @@
                 </ul>
             </div>
         </div>
-
+        $Sql ==
+        if($res>0){
+        while((erow){
+        ecno
+        })
+        }
         <!-- Posts Upload Section -->
-        <div class="upload" id="postsContainer">
+        <!-- <div class="upload" id="postsContainer">
             <div class="box fade-in-up" style="animation-delay: 0.3s;">
                 <div class="post">
                     <button onclick="showPostDetails(1)">Posts..</button>
@@ -837,9 +887,9 @@
                     <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
                     <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
                 </ul>
-            </div>
+            </div> -->
 
-            <div class="box_2 fade-in-up" style="animation-delay: 0.4s;">
+        <!-- <div class="box_2 fade-in-up" style="animation-delay: 0.4s;">
                 <div class="post">
                     <button onclick="showPostDetails(2)">Posts..</button>
                     <img src="/" alt="Fry Decision Making Meme" loading="lazy">
@@ -851,9 +901,9 @@
                     <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
                     <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
                 </ul>
-            </div>
+            </div> -->
 
-            <div class="box_3 fade-in-up" style="animation-delay: 0.2s;">
+        <!-- <div class="box_3 fade-in-up" style="animation-delay: 0.2s;">
                 <div class="post">
                     <button onclick="showPostDetails(3)">Posts..</button>
                     <img src="https://via.placeholder.com/460x380/FF6B6B/ffffff?text=Funny+Meme+8" alt="Meme 8" loading="lazy">
@@ -908,7 +958,7 @@
                     <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
                 </ul>
             </div>
-        </div>
+        </div> -->
 
         <!-- Tags -->
         <div class="tags">
@@ -950,8 +1000,10 @@
             <h2 style="color: rgb(105, 122, 234); margin-bottom: 20px;">Comments</h2>
             <div id="commentsList" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;"></div>
             <div style="display: flex; gap: 10px;">
-                <input type="text" id="commentInput" placeholder="Add a comment..." style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
-                <button onclick="addComment()" style="background: rgb(105, 122, 234); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Post</button>
+                <input type="text" id="commentInput" placeholder="Add a comment..."
+                    style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px;">
+                <button onclick="addComment()"
+                    style="background: rgb(105, 122, 234); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;">Post</button>
             </div>
         </div>
     </div>
@@ -1023,7 +1075,7 @@
 
             state.liked = !state.liked;
             likeBtn.classList.toggle('active', state.liked);
-            
+
             showNotification(state.liked ? 'Liked!' : 'Like removed');
         }
 
@@ -1039,22 +1091,22 @@
 
             state.disliked = !state.disliked;
             dislikeBtn.classList.toggle('active', state.disliked);
-            
+
             showNotification(state.disliked ? 'Disliked!' : 'Dislike removed');
         }
 
         function toggleSave(postId) {
             const state = postStates[postId];
             const saveBtn = document.getElementById(`save-${postId}`);
-            
+
             state.saved = !state.saved;
             saveBtn.classList.toggle('active', state.saved);
-            
+
             if (state.saved) {
                 saveBtn.innerHTML = '<span>❤️</span> Saved';
             } else {
                 saveBtn.innerHTML = '<span>💾</span> Save';
             }
-            
+
             showNotification(state.saved ? 'Meme saved!' : 'Meme unsaved');
         }
