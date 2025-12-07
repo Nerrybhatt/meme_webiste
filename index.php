@@ -818,11 +818,11 @@
             <div class="nav-right">
                 <div class="search-bar">
                     <input type="text" placeholder="Search---" id="searchInput" onkeypress="handleSearch(event)">
-                    <button onclick="performSearch()"><a href="sign_up.php">Submit</a></button>
+                    <!-- <button onclick="performSearch()"><a href="sign_up.php">Submit</a></button> -->
                 </div>
 
                 <div class="user">
-                    <a href="account.php" onclick="showProfile()">
+                    <a href="sign_up.php" onclick="showProfile()">
                         <img src="account.png" style="filter: invert(1);">
                     </a>
                 </div>
@@ -867,130 +867,88 @@
                 </ul>
             </div>
         </div>
-        $Sql ==
-        if($res>0){
-        while((erow){
-        ecno
-        })
+
+
+    </div> -->
+    <!-- Posts Upload Section -->
+    <div class="upload" id="postsContainer">
+        <?php
+        include "database_connection.php";
+
+        // Fetch latest memes
+        $sql = "SELECT id, image_url, caption, category FROM post ORDER BY created_at DESC";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result && mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                $id = $row['id'];
+                $image = $row['image_url'];
+                $caption = htmlspecialchars($row['caption']);
+                $category = htmlspecialchars($row['category']);
+                ?>
+                <div class="box fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="post">
+                        <button onclick="showPostDetails(<?php echo $id; ?>)">Posts..</button>
+                        <img src="<?php echo $image; ?>" alt="<?php echo $caption; ?>" loading="lazy"
+                            style="max-width:100%; max-height:400px; border-radius:8px;">
+                    </div>
+                    <ul class="remarks">
+                        <li><button onclick="toggleLike(<?php echo $id; ?>)" id="like-<?php echo $id; ?>">
+                                <span><img src="like.png" width="20px"></span></button></li>
+                        <li><button onclick="toggleDislike(<?php echo $id; ?>)" id="dislike-<?php echo $id; ?>">
+                                <span><img src="dislike.png" width="20px"></span></button></li>
+                        <li><button onclick="openComments(<?php echo $id; ?>)" class="margin">
+                                <span><img src="comment.png" width="20px"></span> Commt.</button></li>
+                        <li><button onclick="toggleSave(<?php echo $id; ?>)" id="save-<?php echo $id; ?>" class="save">
+                                <span><img src="save.png" width="20px"></span> Save</button></li>
+                        <li><button onclick="shareMeme(<?php echo $id; ?>)" class="share">
+                                <span><img src="share.png" width="20px"></span> Share</button></li>
+                    </ul>
+                </div>
+                <?php
+            }
+        } else {
+            echo "<p style='text-align:center;'>No memes found.</p>";
         }
-        <!-- Posts Upload Section -->
-        <!-- <div class="upload" id="postsContainer">
-            <div class="box fade-in-up" style="animation-delay: 0.3s;">
-                <div class="post">
-                    <button onclick="showPostDetails(1)">Posts..</button>
-                    <img src="/" alt="Batman Robin Social Media Meme" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div> -->
 
-        <!-- <div class="box_2 fade-in-up" style="animation-delay: 0.4s;">
-                <div class="post">
-                    <button onclick="showPostDetails(2)">Posts..</button>
-                    <img src="/" alt="Fry Decision Making Meme" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div> -->
+        mysqli_close($conn);
+        ?>
+    </div>
 
-        <!-- <div class="box_3 fade-in-up" style="animation-delay: 0.2s;">
-                <div class="post">
-                    <button onclick="showPostDetails(3)">Posts..</button>
-                    <img src="https://via.placeholder.com/460x380/FF6B6B/ffffff?text=Funny+Meme+8" alt="Meme 8" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div>
 
-            <div class="box_3 fade-in-up" style="animation-delay: 0.3s;">
-                <div class="post">
-                    <button onclick="showPostDetails(4)">Posts..</button>
-                    <img src="" alt="Amal Special Meme" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div>
 
-            <div class="box_3 fade-in-up" style="animation-delay: 0.4s;">
-                <div class="post">
-                    <button onclick="showPostDetails(5)">Posts..</button>
-                    <img src="/" alt="Capture Moment" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div>
 
-            <div class="box_3 fade-in-up" style="animation-delay: 0.5s;">
-                <div class="post">
-                    <button onclick="showPostDetails(6)">Posts..</button>
-                    <img src="https://via.placeholder.com/460x380/FFB74D/ffffff?text=Meme+9" alt="Meme 9" loading="lazy">
-                </div>
-                <ul class="remarks">
-                    <li><button onclick="toggleLike(1)" id="like-1"><span><img src="like.png" width="20px"> </span></button></li>
-                    <li><button onclick="toggleDislike(1)" id="dislike-1"><span><img src="dislike.png" width="20px"></span></button></li>
-                    <li><button onclick="openComments(1)" class="margin"><span><img src="comment.png" width="20px"> </span> Commt.</button></li>
-                    <li><button onclick="toggleSave(1)" id="save-1" class="save"><span><img src="save.png" width="20px"> </span> Save</button></li>
-                    <li><button onclick="shareMeme(1)" class="share"><span><img src="share.png" width="20px"> </span> Share</button></li>
-                </ul>
-            </div>
-        </div> -->
-
-        <!-- Tags -->
-        <div class="tags">
-            <div class="sticky_sides">
-                <h3>Recommended tags</h3>
-                <ul class="T">
-                    <li><button onclick="searchByTag('2025')">#2025</button></li>
-                    <li><button onclick="searchByTag('February')">#February</button></li>
-                    <li><button onclick="searchByTag('trump')">#trump</button></li>
-                </ul>
-                <ul class="P">
-                    <li><button onclick="searchByTag('Russia')">#Russia</button></li>
-                    <li><button onclick="searchByTag('Politics')">#Politics</button></li>
-                    <li><button onclick="searchByTag('Ronaldo')">#Ronaldo</button></li>
-                </ul>
-                <ul class="A">
-                    <li><button onclick="searchByTag('US_gov')">#US_gov</button></li>
-                    <li><button onclick="searchByTag('Daily')">#Daily</button></li>
-                    <li><button onclick="searchByTag('Country')">#Country</button></li>
-                </ul>
-                <ul class="G">
-                    <li><button onclick="searchByTag('Birds')">#Birds</button></li>
-                    <li><button onclick="searchByTag('Cricket')">#Cricket</button></li>
-                    <li><button onclick="searchByTag('Messi')">#Messi</button></li>
-                </ul>
-                <ul class="S">
-                    <li><button onclick="searchByTag('champ_trop')">#champ_trop</button></li>
-                    <li><button onclick="searchByTag('Saudi')">#Saudi</button></li>
-                    <li><button onclick="searchByTag('Nature')">#Nature</button></li>
-                </ul>
-            </div>
+    <!-- Tags -->
+    <div class="tags">
+        <div class="sticky_sides">
+            <h3>Recommended tags</h3>
+            <ul class="T">
+                <li><button onclick="searchByTag('2025')">#2025</button></li>
+                <li><button onclick="searchByTag('February')">#February</button></li>
+                <li><button onclick="searchByTag('trump')">#trump</button></li>
+            </ul>
+            <ul class="P">
+                <li><button onclick="searchByTag('Russia')">#Russia</button></li>
+                <li><button onclick="searchByTag('Politics')">#Politics</button></li>
+                <li><button onclick="searchByTag('Ronaldo')">#Ronaldo</button></li>
+            </ul>
+            <ul class="A">
+                <li><button onclick="searchByTag('US_gov')">#US_gov</button></li>
+                <li><button onclick="searchByTag('Daily')">#Daily</button></li>
+                <li><button onclick="searchByTag('Country')">#Country</button></li>
+            </ul>
+            <ul class="G">
+                <li><button onclick="searchByTag('Birds')">#Birds</button></li>
+                <li><button onclick="searchByTag('Cricket')">#Cricket</button></li>
+                <li><button onclick="searchByTag('Messi')">#Messi</button></li>
+            </ul>
+            <ul class="S">
+                <li><button onclick="searchByTag('champ_trop')">#champ_trop</button></li>
+                <li><button onclick="searchByTag('Saudi')">#Saudi</button></li>
+                <li><button onclick="searchByTag('Nature')">#Nature</button></li>
+            </ul>
         </div>
+    </div>
     </div>
 
     <!-- Comment Modal -->
@@ -1008,7 +966,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // State management
         let currentPostId = null;
         let postStates = {};
@@ -1109,4 +1067,4 @@
             }
 
             showNotification(state.saved ? 'Meme saved!' : 'Meme unsaved');
-        }
+        } -->
