@@ -166,10 +166,13 @@ if (isset($_POST['submit_comment'])) {
                                 </button>
                             </li>
 
-                            <li><button onclick="toggleSave(<?php echo $id; ?>)" class="save">
+                            <form action="save_post.php" method="POST" style="display:inline;">
+                                <input type="hidden" name="post_id" value="<?php echo $id; ?>">
+                                <button type="submit" name="save_post">
                                     <span><img src="save.png" width="20px"></span> Save
                                 </button>
-                            </li>
+                            </form>
+
 
                             <li><button onclick="shareMeme(<?php echo $id; ?>)" class="share">
                                     <span><img src="share.png" width="20px"></span> Share
@@ -289,6 +292,30 @@ if (isset($_POST['submit_comment'])) {
         </div>
     </div>
 
+    <!-- share -->
+    <div id="shareBox" style="
+    display:none;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#fff;
+    padding:10px;
+    border-radius:8px;
+    box-shadow:0 0 10px #0003;
+">
+        <h4>Share Meme</h4>
+
+        <a id="share_fb" target="_blank">Facebook</a><br>
+        <a id="share_wp" target="_blank">WhatsApp</a><br>
+        <a id="share_tw" target="_blank">Twitter</a><br>
+        <a id="share_tg" target="_blank">Telegram</a><br>
+        <a id="share_rd" target="_blank">Reddit</a><br>
+        <button onclick="copyShareLink()">Copy Link</button><br><br>
+
+        <button onclick="closeShareBox()">Close</button>
+    </div>
+
+
 
     <script>
         function toggleCommentSection(postId) {
@@ -314,4 +341,47 @@ if (isset($_POST['submit_comment'])) {
                 toggleBtn.innerText = 'View More';
             }
         }
+
+
+        function shareMeme(id) {
+            let url = window.location.origin + "/view_post.php?id=" + id;
+            let encoded = encodeURIComponent(url);
+
+            document.getElementById("share_fb").href =
+                "https://www.facebook.com/sharer/sharer.php?u=" + encoded;
+
+            document.getElementById("share_wp").href =
+                "https://api.whatsapp.com/send?text=" + encoded;
+
+            document.getElementById("share_tw").href =
+                "https://twitter.com/intent/tweet?url=" + encoded;
+
+            document.getElementById("share_tg").href =
+                "https://t.me/share/url?url=" + encoded;
+
+            document.getElementById("share_rd").href =
+                "https://www.reddit.com/submit?url=" + encoded;
+
+            // Show box
+            document.getElementById("shareBox").style.display = "block";
+
+            // Save link for copy
+            window.currentShareLink = url;
+        }
+
+        function copyShareLink() {
+            navigator.clipboard.writeText(window.currentShareLink);
+            alert("Link copied!");
+        }
+
+        function closeShareBox() {
+            document.getElementById("shareBox").style.display = "none";
+        }
+
+
+
+
+
+
+
     </script>
